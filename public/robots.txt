@@ -1,0 +1,5 @@
+# robots.txt — Madhur: deploy ke baad {{YOUR_DOMAIN}} ki jagah apna asli domain daalein
+User-agent: *
+Allow: /
+
+Sitemap: {{YOUR_DOMAIN}}/sitemap.xml

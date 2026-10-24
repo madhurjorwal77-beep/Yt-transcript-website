@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YT Transcript — Free YouTube Transcript Generator</title>
+<meta name="description" content="Paste any YouTube link and get the full video transcript with timestamps — free, in Hindi, English and 100+ languages. Copy or download as .txt / .srt.">
+<link rel="canonical" href="{{YOUR_DOMAIN}}/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="YT Transcript — Free YouTube Transcript Generator">
+<meta property="og:description" content="Get the transcript of any YouTube video with timestamps. Free, fast, works with Hindi and English captions.">
+<meta property="og:url" content="{{YOUR_DOMAIN}}/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<!-- Optional: Google Fonts (site works fine without it too) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!-- ADSENSE VERIFY: AdSense site-verification code milne par is comment ki jagah paste karein -->
+<script src="/ads-config.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="/">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5z" fill="#fff"/></svg></span>
+      <span>YT Transcript<small>Free YouTube Transcript Generator</small></span>
+    </a>
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="/how-to.html">How To</a>
+      <a href="/hindi-guide.html">Hindi Guide</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- Ad slot: below header -->
+  <div class="ad-slot" data-slot="header"><b>Ad Space</b>Yahan ad aayega — AdSense ID daalne ke baad (ads-config.js)</div>
+
+  <section class="hero">
+    <h1>Get Any YouTube Video's <span class="hl">Transcript</span> in Seconds</h1>
+    <p>Paste a YouTube link below and get the full transcript with timestamps — copy it, search it, or download it as a text or subtitle file. Bilkul free, no sign-up.</p>
+  </section>
+
+  <section class="tool-card" id="tool">
+    <form class="tool-form" id="tool-form">
+      <input type="text" id="url-input" placeholder="Paste YouTube link here — youtube.com/watch?v=… , youtu.be/… , Shorts…" autocomplete="off" spellcheck="false">
+      <button class="btn" id="get-btn" type="submit">Get Transcript</button>
+    </form>
+    <div class="examples">
+      <span>Try an example:</span>
+      <button class="chip" type="button" data-url="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Music video (English captions)</button>
+      <button class="chip" type="button" data-url="https://www.youtube.com/watch?v=qp0HIF3SfI4">TED Talk (Hindi + 48 languages)</button>
+    </div>
+    <div class="lang-row" id="lang-row" style="display:none">
+      <label for="lang-select">Caption language:</label>
+      <select id="lang-select"></select>
+      <label for="translate-select">Translate to:</label>
+      <select id="translate-select">
+        <option value="">No translation</option>
+        <option value="hi">Hindi (हिन्दी)</option>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="ur">Urdu</option>
+        <option value="bn">Bengali</option>
+        <option value="ta">Tamil</option>
+        <option value="te">Telugu</option>
+        <option value="mr">Marathi</option>
+        <option value="pa">Punjabi</option>
+      </select>
+    </div>
+
+    <div class="state loading" id="state-loading"><span class="spinner"></span>Fetching transcript… please wait a few seconds.</div>
+    <div class="state error" id="state-error"><span id="error-msg"></span><button class="btn-ghost" id="retry-btn" type="button">↻ Try Again</button></div>
+
+    <div class="result" id="result">
+      <div class="video-card">
+        <img id="video-thumb" src="" alt="">
+        <div>
+          <h2 id="video-title"></h2>
+          <p id="video-meta"></p>
+        </div>
+      </div>
+      <div class="result-grid">
+        <div class="transcript-main">
+          <div class="transcript-tools">
+            <input type="search" id="search-input" placeholder="Search inside transcript…">
+            <label class="toggle"><input type="checkbox" id="ts-toggle" checked> Timestamps</label>
+          </div>
+          <p class="counts"><span id="counts"></span> · <span id="search-count"></span></p>
+          <div class="transcript-tools">
+            <button class="btn-ghost" id="copy-btn" type="button">Copy</button>
+            <button class="btn-ghost" id="copy-ts-btn" type="button">Copy with timestamps</button>
+            <button class="btn-ghost" id="dl-txt-btn" type="button">Download .txt</button>
+            <button class="btn-ghost" id="dl-srt-btn" type="button">Download .srt</button>
+          </div>
+          <div class="segments" id="segments"></div>
+          <!-- Ad slot: in-content, transcript ke neeche -->
+          <div class="ad-slot" data-slot="content"><b>Ad Space</b>Yahan ad aayega — AdSense ID daalne ke baad (ads-config.js)</div>
+        </div>
+        <aside class="sidebar">
+          <div class="card">
+            <h3>How it works</h3>
+            <p>We read the captions (subtitles) that already exist on the video and turn them into clean, timestamped text.</p>
+            <ul>
+              <li>Works with manual + auto-generated captions</li>
+              <li>Hindi, English and 100+ languages</li>
+              <li>Click any timestamp to play the video from that line</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Good to know</h3>
+            <p>If a video has no captions, no tool can create a transcript from it here. Very rarely YouTube blocks a fetch — just press Try Again after a short wait.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Ad slot: tool ke neeche -->
+    <div class="ad-slot" data-slot="tool"><b>Ad Space</b>Yahan ad aayega — AdSense ID daalne ke baad (ads-config.js)</div>
+  </section>
+
+  <section class="features">
+    <div class="feature"><h3>⚡ Fast &amp; Free</h3><p>No sign-up, no payment. Paste a link, get the transcript — most videos take just a few seconds.</p></div>
+    <div class="feature"><h3>🕐 Timestamps Included</h3><p>Every line carries its time in the video, so you can jump straight to the part you need.</p></div>
+    <div class="feature"><h3>🌐 Hindi + 100 Languages</h3><p>Manual and auto captions in Hindi, English and many more — plus a translate option.</p></div>
+    <div class="feature"><h3>⬇️ Copy &amp; Download</h3><p>Copy the text, or save it as .txt for notes or .srt to use as subtitles in your own edits.</p></div>
+  </section>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <!-- Ad slot: footer ke upar -->
+    <div class="ad-slot" data-slot="footer"><b>Ad Space</b>Yahan ad aayega — AdSense ID daalne ke baad (ads-config.js)</div>
+    <div class="cols">
+      <div>
+        <h4>Tool</h4>
+        <ul>
+          <li><a href="/">Transcript Generator</a></li>
+          <li><a href="/how-to.html">How to Use</a></li>
+          <li><a href="/hindi-guide.html">Hindi Guide</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Note</h4>
+        <ul><li style="color:var(--muted);max-width:300px">Transcripts belong to the video creators. Please respect copyright — use them for study, reference and accessibility.</li></ul>
+      </div>
+    </div>
+    <p class="credit">© <span id="year">2026</span> YT Transcript · Made by Madhur · Not affiliated with YouTube or Google.</p>
+  </div>
+</footer>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script src="/ads.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

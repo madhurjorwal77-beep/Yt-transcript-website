@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | YT Transcript</title>
+<meta name="description" content="Contact the maker of YT Transcript — report a problem, ask a question or suggest an improvement.">
+<link rel="canonical" href="{{YOUR_DOMAIN}}/contact.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Contact | YT Transcript">
+<meta property="og:description" content="Contact the maker of YT Transcript — report a problem, ask a question or suggest an improvement.">
+<meta property="og:url" content="{{YOUR_DOMAIN}}/contact.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!-- ADSENSE VERIFY: AdSense site-verification code milne par is comment ki jagah paste karein -->
+<script src="/ads-config.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="/">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5z" fill="#fff"/></svg></span>
+      <span>YT Transcript<small>Free YouTube Transcript Generator</small></span>
+    </a>
+    <nav class="main-nav">
+      <a href="/">Home</a><a href="/how-to.html">How To</a><a href="/hindi-guide.html">Hindi Guide</a><a href="/faq.html">FAQ</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+  <div class="ad-slot" data-slot="header"><b>Ad Space</b>Yahan ad aayega — AdSense ID daalne ke baad (ads-config.js)</div>
+  <main class="prose">
+
+<h1>Contact</h1>
+<p class="lede">Found a video that should work but doesn't? A transcript that looks wrong? Or an idea that would make this tool better? Send a message below — it opens your own email app with everything filled in.</p>
+<!-- CONTACT EMAIL: Madhur, neeche form mein "your-email@example.com" ko apne asli email se badal dein (is page mein 1 jagah mailto mein hai) -->
+<form class="contact-form" id="contact-form">
+  <label for="cf-name">Your name</label>
+  <input type="text" id="cf-name" required placeholder="Your name">
+  <label for="cf-subject">Subject</label>
+  <input type="text" id="cf-subject" required placeholder="What is this about?">
+  <label for="cf-msg">Message</label>
+  <textarea id="cf-msg" rows="6" required placeholder="Write your message… if a video link is failing, paste that link here."></textarea>
+  <p style="margin-top:16px"><button class="btn" type="submit">Open Email App &amp; Send</button></p>
+  <p style="color:var(--muted);font-size:.9rem">This form does not store anything on the site — it simply opens your email app (Gmail, etc.) with the message ready to send.</p>
+</form>
+<script>
+document.getElementById("contact-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var name = document.getElementById("cf-name").value.trim();
+  var sub = document.getElementById("cf-subject").value.trim();
+  var msg = document.getElementById("cf-msg").value.trim();
+  var body = encodeURIComponent(msg + "\n\n— " + name);
+  window.location.href = "mailto:your-email@example.com?subject=" +
+    encodeURIComponent("[YT Transcript] " + sub) + "&body=" + body;
+});
+</script>
+
+  </main>
+</div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ad-slot" data-slot="footer"><b>Ad Space</b>Yahan ad aayega — AdSense ID daalne ke baad (ads-config.js)</div>
+    <div class="cols">
+      <div><h4>Tool</h4><ul>
+        <li><a href="/">Transcript Generator</a></li>
+        <li><a href="/how-to.html">How to Use</a></li>
+        <li><a href="/hindi-guide.html">Hindi Guide</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
+      </ul></div>
+      <div><h4>Site</h4><ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html">Terms of Use</a></li>
+      </ul></div>
+    </div>
+    <p class="credit">© <span id="year">2026</span> YT Transcript · Made by Madhur · Not affiliated with YouTube or Google.</p>
+  </div>
+</footer>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script src="/ads.js"></script>
+</body>
+</html>
